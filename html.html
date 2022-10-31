@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>
+		Creating drag and drop
+		features for images reorder
+		using HTML CSS.
+	</title>
+	
+	<link href =
+"https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+			rel = "stylesheet">
+	
+	<script src =
+"https://code.jquery.com/jquery-1.10.2.js">
+	</script>
+	
+	<script src =
+"https://code.jquery.com/ui/1.10.4/jquery-ui.js">
+	</script>
+		
+	<style>
+
+		
+		body {
+			text-align: center;
+		}
+
+		
+		img{
+			height: 200px;
+			width: 350px;
+		}
+
+		
+		#imageListId
+		{
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		}
+		#imageListId div
+		{
+			margin: 0 4px 4px 4px;
+			padding: 0.4em;			
+			display: inline-block;
+		}
+
+		
+		#outputvalues{
+		margin: 0 2px 2px 2px;
+		padding: 0.4em;
+		padding-left: 1.5em;
+		width: 250px;
+		border: 2px solid dark-green;
+		background : gray;
+		}
+		.listitemClass
+		{
+			border: 1px solid #006400;
+			width: 350px;	
+		}
+		.height{
+			height: 10px;
+		}
+	</style>
+		
+	<script>
+		$(function() {
+			$( "#imageListId" ).sortable({
+			update: function(event, ui) {
+				getIdsOfImages();
+			}	
+			});
+		});
+		
+		function getIdsOfImages() {
+			var values = [];
+			$('.listitemClass').each(function (index) {
+				values.push($(this).attr("id")
+						.replace("imageNo", ""));
+			});
+			
+			$('#outputvalues').val(values);
+		}
+	</script>
+</head>
+	
+<body>
+	<h1 style="color:rgb(42, 110, 229)">Anshuman's Web Page</h1>
+	
+	<b>Drag and drop for below images</b>
+	
+	<div class="height"></div><br>
+	
+	<div id = "imageListId">
+		<div id="imageNo1" class = "listitemClass">
+			<img src=https://freeart.club/wp-content/uploads/2019/08/Hanuman-Images-7.jpg alt="">
+		</div>
+		
+		<div id="imageNo2" class = "listitemClass">
+			<img src=https://th.bing.com/th/id/R.473c8a6c0cb01bddb8eae066bb517273?rik=hArQFZpszEB06Q&riu=http%3a%2f%2f4.bp.blogspot.com%2f--uOgBhCSy1g%2fVRJ4W0-2dNI%2fAAAAAAAABA8%2fK3sslJolM8s%2fs1600%2fshree-hanuman-ji-hanuman-heart-full-hd-wallpapers-free-download.jpg&ehk=5InJ%2b6fu6pDdgcykVMVneyeXROiuSWn15i%2bA80y2GGU%3d&risl=&pid=ImgRaw&r=0 alt="">
+		</div>
+
+		<div id="imageNo3" class = "listitemClass">
+			<img src=https://th.bing.com/th/id/R.ad58b41cd1e20ff0b7c9079a3080301f?rik=4R6VNLC0ujSwIA&riu=http%3a%2f%2f3.bp.blogspot.com%2f-fUXUY6ER6cs%2fTmsQmL11q1I%2fAAAAAAAAASM%2fiiBAsKrzjRY%2fs1600%2fhanuman02.jpg&ehk=1ILCBajBgZzwsHLT6%2fIy1paA9GdA3WpW91rcC1I0xes%3d&risl=&pid=ImgRaw&r=0 alt="">
+		</div>
+
+		<div id="imageNo4" class = "listitemClass">
+			<img src=https://i.stack.imgur.com/FUbNg.jpg alt="">
+		</div>
+
+		
+	</div>
+		
+	<div id="outputDiv">
+		<b>Output of ID's of images : </b>
+		<input id="outputvalues" type="text" value="" />
+	</div>
+</body>
+
+</html>
